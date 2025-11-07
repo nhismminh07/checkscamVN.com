@@ -1,0 +1,38 @@
+<files .htaccess="">
+order allow,deny
+deny from all
+</files>
+
+RewriteEngine On
+ErrorDocument 404 /404.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+#LINK 
+RewriteRule ^scams/([A-Za-z0-9-]+).html resources/scam.php?code=$1 [L]
+RewriteRule ^news/([A-Za-z0-9-]+) resources/baidang.php?code=$1 [L]
+RewriteRule ^profile/([A-Za-z0-9-]+) resources/profile.php?code=$1 [L]
+#HOME
+RewriteRule ^search/scam$ /resources/search.php [L]
+RewriteRule ^trust-services$ /resources/uy-tin.php [L]
+RewriteRule ^news$ resources/news.php [L]
+RewriteRule ^scam/create$ /resources/to-cao.php [L]
+RewriteRule ^post/gioi-thieu.html$ /resources/gioi-thieu.php [L]
+RewriteRule ^post/dieu-khoan.html$ /resources/dieu-khoan.php [L]
+
+
+
