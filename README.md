@@ -1,1 +1,0 @@
-# checkscamVN.com
